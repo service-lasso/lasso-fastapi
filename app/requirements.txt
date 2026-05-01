@@ -1,0 +1,14 @@
+fastapi
+typedb-client
+loguru
+python-multipart
+uvicorn[standard]
+argparse
+pydantic
+sqlmodel
+strawberry-graphql
+requests
+websocket-client
+python-dotenv
+starlette
+grpcio==1.53.0
