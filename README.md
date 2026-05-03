@@ -2,7 +2,7 @@
 
 Release-backed FastAPI app service for Service Lasso.
 
-This repo packages the TypeRefinery `fastapi` donor service source plus Python dependencies into a Service Lasso archive. The service exposes `API_URL` and `API_PORT`, starts through the `@python` provider, and verifies HTTP readiness on `/healthcheck`.
+This repo packages a FastAPI application service and its Python dependencies into a Service Lasso archive. The service exposes `API_URL` and `API_PORT`, starts through the `@python` provider, and verifies HTTP readiness on `/healthcheck`.
 
 ## Service Contract
 
@@ -30,9 +30,3 @@ npm test
 ```
 
 The verification packages the current platform, extracts the archive, starts FastAPI, waits for `/healthcheck`, and stops the process.
-
-## Donor Source
-
-```text
-C:\projects\typerefinery-ai\typerefinery\services\fastapi
-```
