@@ -2,14 +2,14 @@
 
 Release-backed FastAPI app service for Service Lasso.
 
-This repo packages a FastAPI application service and its Python dependencies into a Service Lasso archive. The service exposes `API_URL` and `API_PORT`, starts through the `@python` provider, and verifies HTTP readiness on `/healthcheck`.
+This repo packages a FastAPI application service and its Python dependencies into a Service Lasso archive. The service exposes `API_URL` and `API_PORT`, starts through the `@python` provider, and verifies HTTP readiness through canonical `healthchecks[]` on `/healthcheck`.
 
 ## Service Contract
 
 - Service ID: `fastapi`
 - Default port: `8000`
 - Provider dependency: `@python`
-- Health: HTTP `GET /healthcheck` expects `200`
+- Health: `healthchecks[]` id `http-healthcheck` performs HTTP `GET /healthcheck` and expects `200`
 - Runtime data: `${SERVICE_ROOT}/runtime/data`
 - Runtime logs: `${SERVICE_ROOT}/runtime/logs`
 

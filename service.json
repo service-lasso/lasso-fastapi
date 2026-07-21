@@ -62,13 +62,16 @@
       }
     ]
   },
-  "healthcheck": {
-    "type": "http",
-    "url": "http://${API_HOST}:${API_PORT}/healthcheck",
-    "expected_status": 200,
-    "retries": 180,
-    "interval": 500
-  },
+  "healthchecks": [
+    {
+      "id": "http-healthcheck",
+      "type": "http",
+      "url": "http://${API_HOST}:${API_PORT}/healthcheck",
+      "expected_status": 200,
+      "retries": 180,
+      "interval": 500
+    }
+  ],
   "depend_on": ["@python"],
   "updates": {
     "enabled": true,

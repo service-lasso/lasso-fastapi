@@ -90,7 +90,15 @@ if (serviceManifest.id !== "fastapi" || serviceManifest.version !== serviceVersi
   throw new Error(`Unexpected service manifest identity: ${JSON.stringify({ id: serviceManifest.id, version: serviceManifest.version })}`);
 }
 
-if (serviceManifest.healthcheck?.type !== "http" || serviceManifest.ports?.service !== 8000) {
+const [healthcheck] = serviceManifest.healthchecks ?? [];
+if (
+  serviceManifest.healthcheck !== undefined ||
+  serviceManifest.healthchecks?.length !== 1 ||
+  healthcheck?.id !== "http-healthcheck" ||
+  healthcheck?.type !== "http" ||
+  healthcheck?.url !== "http://${API_HOST}:${API_PORT}/healthcheck" ||
+  serviceManifest.ports?.service !== 8000
+) {
   throw new Error(`FastAPI service.json health/ports drifted: ${JSON.stringify(serviceManifest)}`);
 }
 
